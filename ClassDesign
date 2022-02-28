@@ -1,0 +1,39 @@
+(src/model + src/controller) ??src/main/java/model etc??
+-----Models-------
+Address class
+Fields
+Int id   # id for database entry
+String name  # person's first and last name// business name
+String address  # address in form 123 Address St.
+# room for city, state, phone, any other contact info
+
+AddressBookDetails class
+Fields
+Int id # id for database entry
+String listName # (examples could be "Business", "Personal", "Vacation")
+List <Address> listOfAddresses # list of individual Addresses in book
+# User? can easily integrate object that store's ideas like Spencer's Business Address Book or Aaron's Personal Address Book
+#  would require new AddressUser class
+
+-----Controllers------
+AddressHelper class
+# works with Address class!
+# Use  EntityManagerFactory to build list of Addresses, and methods like insert, delete and edit
+
+
+(src/main/webapp)
+-----Views--------
+Index.html
+# Homepage. Will eventually act as a housing with links to view and add to AddressBook
+links
+   > addAddressServlet > new-address.jsp > createNewAddressServlet (creates address)
+
+new-address.jsp
+# Page able to add info for new address
+
+
+---Servlets---
+AddNewAddressServlet -- redirects from index.html to new-address.jsp
+CreateNewAddressServlet -- processes address entry on new-address.jsp, creates new address
+
+
