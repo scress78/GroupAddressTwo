@@ -8,15 +8,19 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<table>
-<c:forEach items="${requestScope.allItems}" var="currentitem">
-<tr>
- <td><input type="radio" name="id" value="${currentitem.id}"></td>
- <td>${currentitem.name}</td>
- <td>${currentitem.address}</td>
- </tr>
-</c:forEach>
-</table>
-	
+	<form method = "post" action = "navigationServlet">
+		<table>
+			<c:forEach items="${requestScope.allItems}" var="currentitem">
+			<tr>
+ 			<td><input type="radio" name="id" value="${currentitem.id}"></td>
+ 			<td>${currentitem.name}</td>
+ 			<td>${currentitem.address}</td>
+ 			</tr>
+			</c:forEach>
+		</table>
+		<input type = "submit" value = "edit" name="doThisToItem">
+		<input type = "submit" value = "delete" name="doThisToItem">
+		<input type="submit" value = "add" name = "doThisToItem">
+	</form>
 </body>
 </html>
