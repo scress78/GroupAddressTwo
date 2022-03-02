@@ -27,6 +27,9 @@ Index.html
 # Homepage. Will eventually act as a housing with links to view and add to AddressBook
 links
    > addAddressServlet > new-address.jsp > createNewAddressServlet (creates address)
+   > viewAllAddressServlet > address-list.jsp > navigationServlet (edit, delete or add address)
+   (matching with ViewToDoServlet (viewing all possible addresses, rather than all address books)
+   ** note apache error fix?: https://stackoverflow.com/questions/13244233/server-tomcat-v7-0-server-at-localhost-failed-to-start-without-stack-trace-whi
 
 new-address.jsp
 # Page able to add info for new address

@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>All Current Addresses</title>
 </head>
 <body>
 	<form method = "post" action = "navigationServlet">

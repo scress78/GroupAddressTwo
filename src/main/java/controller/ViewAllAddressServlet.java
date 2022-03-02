@@ -1,3 +1,4 @@
+package controller;
 
 
 import java.io.IOException;
@@ -33,9 +34,12 @@ public class ViewAllAddressServlet extends HttpServlet {
 		
 		request.setAttribute("allItems", lih.showAllItems());
 		
+		// below should be address-list.jsp
 		String path = "/address-list.jsp";
 		
-		//below looks like correct syntax. tried '};' and got error
+		// previous
+		//if(lih.showAllItems().isEmpty()){path = "/index.html";}
+		//try
 		if(lih.showAllItems().isEmpty()){path = "/index.html";}
 		
 		getServletContext().getRequestDispatcher(path).forward(request, response); 
