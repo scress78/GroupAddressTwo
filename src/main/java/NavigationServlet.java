@@ -1,5 +1,3 @@
-
-
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -38,20 +36,27 @@ public class NavigationServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String act = request.getParameter("doThisToItem");
+		
+		//
 		AddressHelper dao = new AddressHelper();
 		
-		String path = "/viewAllItemsServlet";
+		String path = "/ViewAllAddressServlet";
 		if (act.equals("delete")) {
 			try {
-				Integer tempId = Integer.parseInt(request.getParameter("id"));
-				Address itemToDelete = dao.searchForItemById(tempId);
-				dao.deleteItem(itemToDelete);
-				} catch (NumberFormatException e) {
-				System.out.println("Forgot to select an address");
+					Integer tempId = Integer.parseInt(request.getParameter("id"));
+					System.out.println("Temp ID: " + tempId);
+					
+					Address itemToDelete = dao.searchForItemById(tempId);
+					dao.deleteItem(itemToDelete);
+				} 
+			catch (NumberFormatException e) {
+					System.out.println("Forgot to select an address");
 				} 
 			}
 		
 		else if (act.equals("edit")) {
+			// note null int exception currently if no radio button selected! 
+			// low priority 3/2/22 (can be resolved with proper routing to try/catch in EditAddressServlet)
 			Integer tempId = Integer.parseInt(request.getParameter("id"));
 			Address itemToEdit = dao.searchForItemById(tempId);
 			request.setAttribute("itemToEdit", itemToEdit);
@@ -60,7 +65,7 @@ public class NavigationServlet extends HttpServlet {
 
 		
 		else if (act.equals("add")) {
-		path = "/index.html";
+		path = "/new-address.jsp";
 		}
 		
 		getServletContext().getRequestDispatcher(path).forward(request, response);

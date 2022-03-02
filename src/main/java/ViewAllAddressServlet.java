@@ -13,7 +13,7 @@ import controller.AddressHelper;
  * Servlet implementation class ViewAllAddressServlet
  * This servlet helps to view all possible addresses
  */
-@WebServlet("/viewAllAddressServlet")
+@WebServlet("/ViewAllAddressServlet")
 public class ViewAllAddressServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -29,16 +29,21 @@ public class ViewAllAddressServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		AddressHelper lih = new AddressHelper();
 		
-		request.setAttribute("allItems", lih.showAllItems());
+		System.out.println("In ViewAllAddressServlet");
+		AddressHelper dao = new AddressHelper();
+		request.setAttribute("allItems", dao.showAllItems());
 		
 		String path = "/address-list.jsp";
+
+		if(dao.showAllItems().isEmpty()){
+			path = "/address-list.jsp"; //previously index.html can change back for troubleshooting
+			request.setAttribute("allItems", " ");
+		}
 		
-		//below looks like correct syntax. tried '};' and got error
-		if(lih.showAllItems().isEmpty()){path = "/index.html";}
-		
-		getServletContext().getRequestDispatcher(path).forward(request, response); 
+		//possible to change back to path
+		getServletContext().getRequestDispatcher("/address-list.jsp").forward(request, response);
+		//getServletContext().getRequestDispatcher(path).forward(request, response); 
 	}
 
 	/**

@@ -35,7 +35,9 @@ public class AddressHelper {
 	public void deleteItem(Address toDelete) {
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
-		TypedQuery<Address>typedQuery = em.createQuery("select li from Address li where li.Name = :selectedName and li.Address = :selectedAddress", Address.class);
+		
+		TypedQuery<Address>typedQuery = em.createQuery(
+				"select li from Address li where li.name = :selectedName and li.address = :selectedAddress", Address.class);
 		
 		//substitute parameter with actual data from toDelete
 		typedQuery.setParameter("selectedName", toDelete.getName());

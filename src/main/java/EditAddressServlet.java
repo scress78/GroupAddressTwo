@@ -45,7 +45,7 @@ public class EditAddressServlet extends HttpServlet {
 		itemToUpdate.setName(name);
 		itemToUpdate.setAddress(address);
 		dao.updateItem(itemToUpdate);
-		getServletContext().getRequestDispatcher("/viewAllItemsServlet").forward(request, response);
+		getServletContext().getRequestDispatcher("/ViewAllAddressServlet").forward(request, response);
 	}
 
 }

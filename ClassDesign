@@ -26,17 +26,26 @@ AddressHelper class
 Index.html
 # Homepage. Will eventually act as a housing with links to view and add to AddressBook
 links
-   > addAddressServlet > new-address.jsp > createNewAddressServlet (creates address)
-   > viewAllAddressServlet > address-list.jsp > navigationServlet (edit, delete or add address)
-   (matching with ViewToDoServlet (viewing all possible addresses, rather than all address books)
-   ** note apache error fix?: https://stackoverflow.com/questions/13244233/server-tomcat-v7-0-server-at-localhost-failed-to-start-without-stack-trace-whi
-
+   > AddAddressServlet > new-address.jsp > CreateNewAddressServlet (creates address)
+        **note navigation slightly different above than in homework projects. We add address from a separate page instead of homepage
+   > ViewAllAddressServlet > address-list.jsp > NavigationServlet (edit, delete or add address)
+   		edit > EditAddressServlet > edit-address.jsp
+   		add  > AddAddressServlet > new-address.jsp
+   		delete > use AddressHelper to remove address
+   
 new-address.jsp
 # Page able to add info for new address
 
+edit-address.jsp
+# Page that edits addresses
+
+address-list.jsp
+# view all current possible addresses
 
 ---Servlets---
 AddNewAddressServlet -- redirects from index.html to new-address.jsp
 CreateNewAddressServlet -- processes address entry on new-address.jsp, creates new address
+EditAddressServlet -- redirects from address-list.jsp to edit-address.jsp
+NavigationServlet -- processes requests in address-list.jsp
 
 

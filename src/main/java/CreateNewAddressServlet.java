@@ -36,7 +36,6 @@ public class CreateNewAddressServlet extends HttpServlet {
 		
 		// matches input field in new-list.jsp
 		String Name = request.getParameter("name");
-		
 		String Address = request.getParameter("address");
 		
 		System.out.println("Contact Name: "+ Name);
@@ -48,6 +47,10 @@ public class CreateNewAddressServlet extends HttpServlet {
 		AddressHelper adh = new AddressHelper();
 		
 		adh.insertItem(ad);
+		
+		//returns a list of all addresses, does not print
+		System.out.println(adh.showAllItems());
+		//adh.showAllItems();
 		
 		getServletContext().getRequestDispatcher("/index.html").forward(request, response);
 	}

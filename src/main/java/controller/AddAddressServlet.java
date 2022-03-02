@@ -1,4 +1,4 @@
-
+package controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -12,7 +12,7 @@ import controller.AddressHelper;
 /**
  * Servlet implementation class AddAddressServlet
  */
-@WebServlet("/addAddressServlet")
+@WebServlet("/AddAddressServlet")
 public class AddAddressServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -34,7 +34,7 @@ public class AddAddressServlet extends HttpServlet {
 		AddressHelper dao = new AddressHelper();
 		request.setAttribute("allItems", dao.showAllItems());
 		if(dao.showAllItems().isEmpty()){
-		request.setAttribute("allItems", " ");
+			request.setAttribute("allItems", " ");
 		}
 		getServletContext().getRequestDispatcher("/new-address.jsp").forward(request, response);
 	}

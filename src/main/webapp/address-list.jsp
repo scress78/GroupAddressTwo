@@ -10,14 +10,19 @@
 <body>
 	<form method = "post" action = "navigationServlet">
 		<table>
+		<tr>
+			<td>Name</td>
+			<td>Address</td>
+		<tr>
 			<c:forEach items="${requestScope.allItems}" var="currentitem">
-			<tr>
+			<tr>  
  			<td><input type="radio" name="id" value="${currentitem.id}"></td>
  			<td>${currentitem.name}</td>
  			<td>${currentitem.address}</td>
  			</tr>
 			</c:forEach>
 		</table>
+		
 		<input type = "submit" value = "edit" name="doThisToItem">
 		<input type = "submit" value = "delete" name="doThisToItem">
 		<input type="submit" value = "add" name = "doThisToItem">
