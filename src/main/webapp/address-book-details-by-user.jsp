@@ -7,24 +7,31 @@
 <meta charset="UTF-8">
 <title>Address Book</title>
 </head>
-<body>
-<form method = "post" action = "listnavigationServlet">
-<table>
-<c:forEach items="${requestScope.allLists}" var="currentlist">
-<tr>
- <td><input type="radio" name="id" value="${currentlist.id}"></td>
- <td><h2>${currentlist.listName}</h2></td></tr>
- <tr><td colspan="3">Date: ${currentlist.dateStamp}</td></tr>
- <tr><td colspan="3">Address Book User: ${currentlist.addressBookUser.userName}</td></tr>
- <c:forEach var = "listVal" items = "${currentlist.listOfItems}">
- <tr><td></td><td colspan="3">
- ${listVal.name}, ${listVal.address}
 
- </td>
- </tr>
- </c:forEach>
-</c:forEach>
+<body>
+
+<form method = "post" action = "listnavigationServlet">
+
+<table>
+	<c:forEach items="${requestScope.allLists}" var="currentlist">
+			<tr>
+			 <td><input type="radio" name="id" value="${currentlist.id}"></td>
+			 <td><h2>${currentlist.listName}</h2></td>
+			</tr>
+			
+			 <!-- commenting out to see whether jasper error can be resolved -->
+			 <!-- <tr><td colspan="3">Date: ${currentlist.dateStamp}</td></tr> -->
+			 
+			 <tr><td colspan="3">Address Book User: ${currentlist.addressBookUser.userName}</td></tr>
+			 
+		 <c:forEach var = "listVal" items = "${currentlist.listOfItems}">
+			 <tr><td></td><td colspan="3">${listVal.name}, ${listVal.address}
+			 </td></tr> <!-- << are tags a little off here? extra td? -->
+		 </c:forEach>
+		 
+	</c:forEach>
 </table>
+
 <input type = "submit" value = "edit" name="doThisToList">
 <input type = "submit" value = "delete" name="doThisToList">
 <input type="submit" value = "add" name = "doThisToList">

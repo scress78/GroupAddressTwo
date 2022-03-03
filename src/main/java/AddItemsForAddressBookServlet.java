@@ -33,8 +33,10 @@ public class AddItemsForAddressBookServlet extends HttpServlet {
 		
 		AddressHelper dao = new AddressHelper();
 		request.setAttribute("allItems", dao.showAllItems());
+		System.out.println("In AddItemsForAddressBookServlet");
+		System.out.println(dao.showAllItems());
 		if(dao.showAllItems().isEmpty()){
-		request.setAttribute("allItems", " ");
+			request.setAttribute("allItems", " ");
 		}
 		getServletContext().getRequestDispatcher("/new-address-book.jsp").forward(request, response);
 	}

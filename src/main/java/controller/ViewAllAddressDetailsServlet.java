@@ -32,11 +32,16 @@ public class ViewAllAddressDetailsServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		AddressBookDetailsHelper slh = new AddressBookDetailsHelper();
 		List<AddressBookDetails> abc = slh.getLists();
+		
+		System.out.println("In ViewAllAddressDetailsServlet");
+		System.out.println("Address Book Details: " + slh.getLists());
+		
 		request.setAttribute("allLists", abc);
 		if(abc.isEmpty()){
-		request.setAttribute("allLists", " ");
+			request.setAttribute("allLists", " ");
 		}
-		getServletContext().getRequestDispatcher("/shopping-listby-user.jsp").forward(request, response);
+		
+		getServletContext().getRequestDispatcher("/address-book-details-by-user.jsp").forward(request, response);
 	}
 
 	/**

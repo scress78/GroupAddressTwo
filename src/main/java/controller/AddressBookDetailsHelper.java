@@ -20,17 +20,19 @@ import model.AddressBookDetails;
 public class AddressBookDetailsHelper {
 
 	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("AddressGroupTwo");
-			public void insertNewListDetails(AddressBookDetails s) {
+	
+		public void insertNewListDetails(AddressBookDetails s) {
 			EntityManager em = emfactory.createEntityManager();
 			em.getTransaction().begin();
 			em.persist(s);
 			em.getTransaction().commit();
 			em.close();
-			}
-			public List<AddressBookDetails> getLists() {
+		}
+		
+		public List<AddressBookDetails> getLists() {
 			EntityManager em = emfactory.createEntityManager();
 			List<AddressBookDetails> allDetails = em.createQuery("SELECT d FROM AddressBookDetails d").getResultList();
 			return allDetails;
-			}
 		}
+	}
 

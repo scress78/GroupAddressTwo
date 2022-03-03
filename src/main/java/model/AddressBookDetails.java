@@ -103,6 +103,12 @@ public class AddressBookDetails {
 		this.dateStamp = dateStamp;
 	}
 	
+	public AddressBookDetails(String listName, AddressBookUser addressBookUser) {
+		super();
+		this.listName = listName;
+		this.addressBookUser = addressBookUser;
+	}
+	
 	public AddressBookDetails() {
 		super();
 	}
