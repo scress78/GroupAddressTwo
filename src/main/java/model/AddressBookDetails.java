@@ -23,6 +23,8 @@ public class AddressBookDetails {
 	@GeneratedValue
 	private int id; // select explanatory
 	private String listName; // Kind of a placeholder. Name of specific Address-List
+	private LocalDate dateStamp; // Date added  - AW
+
 	
 	//  OTM types. Match classes Address and AddressBookUser
 	@ManyToOne(cascade=CascadeType.PERSIST)
@@ -64,32 +66,53 @@ public class AddressBookDetails {
 	public void setListOfAddresses(List<Address> listOfAddresses) {
 		this.listOfAddresses = listOfAddresses;
 	}
+	
+	public LocalDate getDateStamp() {
+		return dateStamp;
+	}
+	/**
+	 * @param tripDate the tripDate to set
+	 */
+	public void setDateStamp(LocalDate dateStamp) {
+		this.dateStamp = dateStamp;
+	}
 
 	
 
-	public AddressBookDetails(int id, String listName, AddressBookUser addressBookUser, List<Address> listOfAddresses) {
+	public AddressBookDetails(int id, String listName, AddressBookUser addressBookUser, List<Address> listOfAddresses, LocalDate dateStamp) {
 		super();
 		this.id = id;
 		this.listName = listName;
 		this.addressBookUser = addressBookUser;
 		this.listOfAddresses = listOfAddresses;
+		this.dateStamp = dateStamp;
 	}
 	
-	public AddressBookDetails(String listName, AddressBookUser addressBookUser, List<Address> listOfAddresses) {
+	public AddressBookDetails(String listName, AddressBookUser addressBookUser, List<Address> listOfAddresses, LocalDate dateStamp) {
 		super();
 		this.listName = listName;
 		this.addressBookUser = addressBookUser;
 		this.listOfAddresses = listOfAddresses;
+		this.dateStamp = dateStamp;
 	}
 	
-	public AddressBookDetails(String listName, AddressBookUser addressBookUser) {
+	public AddressBookDetails(String listName, AddressBookUser addressBookUser, LocalDate dateStamp) {
 		super();
 		this.listName = listName;
 		this.addressBookUser = addressBookUser;
+		this.dateStamp = dateStamp;
 	}
 	
 	public AddressBookDetails() {
 		super();
 	}
+
+	@Override
+	public String toString() {
+		return "AddressBookDetails [id=" + id + ", listName=" + listName + ", dateStamp=" + dateStamp
+				+ ", addressBookUser=" + addressBookUser + ", listOfAddresses=" + listOfAddresses + "]";
+	}
+	
+	
 
 }
