@@ -9,7 +9,9 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 import model.AddressBookUser;
 
@@ -18,19 +20,40 @@ import model.AddressBookUser;
  *
  */
 public class AddressBookUserHelper {
-	
-	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("AddressGroupTwo");
-			public void insertAddressBookUser(AddressBookUser s) {
+		static EntityManagerFactory emfactory = 
+			Persistence.createEntityManagerFactory("AddressGroupTwo");
+		
+		public void insertAddressBookUser(AddressBookUser s) {
 			EntityManager em = emfactory.createEntityManager();
 			em.getTransaction().begin();
 			em.persist(s);
 			em.getTransaction().commit();
-			em.close();
+			em.close();  // EntityManager, begin, persist, commit, close .. looks right
 		}
 			
-			public List<AddressBookUser> showAllAddressBookUsers() {
-				EntityManager em = emfactory.createEntityManager();
-				List<AddressBookUser> allAddressBookUsers = em.createQuery("SELECT s FROM AddressBookUser s").getResultList();
-				return allAddressBookUsers;
-				}
+		public List<AddressBookUser> showAllAddressBookUsers() {
+			EntityManager em = emfactory.createEntityManager();
+			// make sure table exists or can be querried.. looks good, capitalization is ok
+			List<AddressBookUser> allAddressBookUsers = em.createQuery("SELECT s FROM AddressBookUser s").getResultList();
+			return allAddressBookUsers;
+		}
+		
+		public AddressBookUser findAddressBookUser(String nameToLookUp) {
+			EntityManager em = emfactory.createEntityManager();
+			em.getTransaction().begin();
+			TypedQuery<AddressBookUser> typedQuery = em.createQuery("select us from AddressBookUser us where us.AddressBookUserName = :selectedName", AddressBookUser.class);
+			
+			typedQuery.setParameter("selectedName", nameToLookUp);
+			typedQuery.setMaxResults(1);
+			AddressBookUser foundAddressBookUser;
+			
+			try {
+				foundAddressBookUser = typedQuery.getSingleResult();
+			} catch (NoResultException ex) {
+				foundAddressBookUser = new AddressBookUser(nameToLookUp);
+			}
+			
+			em.close();
+			return foundAddressBookUser;
+		}
 }

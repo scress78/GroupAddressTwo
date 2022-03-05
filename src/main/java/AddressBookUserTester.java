@@ -21,7 +21,7 @@ public class AddressBookUserTester {
 		sh.insertAddressBookUser(spencer);
 		List<AddressBookUser> allAddressBookUsers = sh.showAllAddressBookUsers();
 		for(AddressBookUser a: allAddressBookUsers) {
-		System.out.println(a.toString());
+			System.out.println(a.toString());
 		}
 	}
 

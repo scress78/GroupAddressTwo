@@ -10,10 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/**
- * @author sunga
- *
- */
+
 @Entity
 @Table(name="addressbookuser")
 public class AddressBookUser {
