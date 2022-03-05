@@ -41,7 +41,7 @@ public class ViewAllAddressDetailsServlet extends HttpServlet {
 			request.setAttribute("allLists", " ");
 		}
 		
-		getServletContext().getRequestDispatcher("/address-book-details-by-user.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("/view-address-book-details.jsp").forward(request, response);
 	}
 
 	/**

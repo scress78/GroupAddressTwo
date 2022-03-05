@@ -1,6 +1,7 @@
 
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,15 +62,17 @@ public class CreateNewAddressBookServlet extends HttpServlet {
 				}
 		}
 		
+		//addresses being added
+		System.out.println(selectedAddressesInList);
+		
 		// make a new user, assign that user a username
 		AddressBookUser user = new AddressBookUser(userName);
 		
 		//AddressBookDetails, initialize with the name of the AddressBook, and the username? add addresses below
-		AddressBookDetails sld = new AddressBookDetails(addressBookName, user);
+		AddressBookDetails sld = new AddressBookDetails(addressBookName, user, LocalDate.now());
 		
 		//set the Addresses, with AddressBookDetails method
-		sld.setListOfAddresses(selectedAddressesInList);
-		
+		//sld.setListOfAddresses(selectedAddressesInList);
 		
 		System.out.println(sld.toString());
 		

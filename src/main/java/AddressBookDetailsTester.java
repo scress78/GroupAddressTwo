@@ -42,7 +42,7 @@ public class AddressBookDetailsTester {
 		// issue is not with timestamp.. duplicate primary key error   <--- can delete this, explained above.
 		
 		//Both of below now tested and working! comment out one of following two lines or the other. both constructors should now work!
-		AddressBookDetails aaronList = new AddressBookDetails("Aaron's List",aaron, LocalDate.now());
+		AddressBookDetails aaronList = new AddressBookDetails("Aaron's List", aaron, LocalDate.now());
 		//AddressBookDetails aaronList = new AddressBookDetails("Aaron's List", aaron);
 		System.out.println("Show Address Book Details for Aaron's List: " + aaronList.toString());
 
