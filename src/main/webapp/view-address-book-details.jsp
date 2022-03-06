@@ -39,12 +39,24 @@
         background-size: cover;
         color:burlywood;
       }
+      
+      h1:hover {
+      	color: black;
+      }
+      
+      c:hover {
+      	color: black;
+      }
+     
+      
       .navbar .navbar-nav .nav-link:hover {
         color:darkgreen;
-}
+		}
+		
 .navbar .navbar-nav .nav-link {
   position: relative;
 }
+
 .navbar .navbar-nav .nav-link::after {
   position: absolute;
   bottom: 0;
@@ -96,7 +108,7 @@
         </div>
       </nav>
 
-<form method = "post" action = "listnavigationServlet">
+<form method = "post" action = "BookNavigationServlet">
 	<c:forEach items="${requestScope.allLists}" var="currentlist">
 		<tr>
 			 <td><input type="radio" name="id" value="${currentlist.id}"></td>
@@ -122,9 +134,9 @@
 	
 	</c:forEach></br>
 
-	<input type = "submit" value = "edit" name="doThisToList">
-	<input type = "submit" value = "delete" name="doThisToList">
-	<input type="submit" value = "add" name = "doThisToList"></br>
+	<input type = "submit" value = "edit" name="doThisToBook">
+	<input type = "submit" value = "delete" name="doThisToBook">
+	<input type="submit" value = "add" name = "doThisToBook"></br>
 </form>
 
 
