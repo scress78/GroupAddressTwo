@@ -37,32 +37,38 @@
         background-attachment: fixed;
         background-size: cover;
         color:burlywood;
+        color:#9C4500;
+      }
+      
+      .element:hover{
+      	color:#00A7DC;
       }
     
     
 </style>
 
 <body>
-	<h1>Address List</h1>
+	<h1 class="element">List of Current Available Addresses</h1>
 	<form method = "post" action = "navigationServlet">
+		<table>
+			<tr class="element">
+				<td><h4>Contact/</h4></td>
+				<td><h4>Address</h4></td>
+			</tr>
+			
+			<c:forEach items="${requestScope.allItems}" var="currentitem">
+				<tr class="element">  
+		 			<td><input type="radio" name="id" value="${currentitem.id}"></td>
+		 			<td>${currentitem.name}</td>
+		 			<td>${currentitem.address}</td>
+	 			</tr>
+			</c:forEach>
+		</table>
 		
 		<input type = "submit" value = "edit" name="doThisToItem">
 		<input type = "submit" value = "delete" name="doThisToItem">
 		<input type="submit" value = "add" name = "doThisToItem">
-		
-		<table>
-		<tr>
-			<td><h4>Name</h4></td>
-			<td><h4>Address</h4></td>
-		<tr>
-			<c:forEach items="${requestScope.allItems}" var="currentitem">
-			<tr>  
- 			<td><input type="radio" name="id" value="${currentitem.id}"></td>
- 			<td>${currentitem.name}</td>
- 			<td>${currentitem.address}</td>
- 			</tr>
-			</c:forEach>
-		</table>
+		<a class="nav-link" href="index.html" class="element">Home</a>
 	</form>
 </body>
 </html>

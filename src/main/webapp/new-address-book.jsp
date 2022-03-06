@@ -37,7 +37,13 @@
         background-attachment: fixed;
         background-size: cover;
         color:burlywood;
+        color:#9C4500
       }
+      
+      .element:hover{
+      	color:#00A7DC;
+      }
+      
       .navbar .navbar-nav .nav-link:hover {
         color:darkgreen;
 		}
@@ -60,14 +66,35 @@
 	.navbar .navbar-nav .nav-link:hover::after {
  		 width: 100%;
 	}
-
-      
 </style>
 
 <body>
-<h1>Create New Address Book</h1>
+	<h1 class="element">Create New Address Book</h1>
+	
+	<form action = "CreateNewAddressBookServlet" method="post">
+		<!-- Implemented via AddressBookDetail.java as AddressBookName  -->
+		<h4 class="element">Address Book Name: <input type ="text" name = "addressBookName"></h4><br />
+		
+		<!-- Implemented via AddressBookUser.java as AddressBookUser  -->
+		<h4 class="element">Username:        <input type = "text" name = "userName"></h4><br />
+		
+		<!-- all properties from Address.java -->
+		<!--  not quite working yet, needs troubleshoot! fix was taglib at top! Must be added-->			
+		<h4 class="element"> Available Addresses: </h4>
 
-	<nav class="navbar navbar-expand-lg navbar-light" style="background-color: burlywood">
+		<!-- Multiple size = how many can be in the list! -->
+		<select name="allItemsToAdd" multiple size="6">
+			<c:forEach items = "${requestScope.allItems}" var="currentitem">
+		 		<option value = "${currentitem.id}"> ${currentitem.name} | ${currentitem.address} </option>
+			</c:forEach >
+		</select> <br />
+		 
+		<input type = "submit" value="Create Book and Add Addresses">
+	</form>
+	
+	<a class="nav-link" href="index.html" class="element">Home</a>
+	
+	<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #9C4500">
      
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler9"
             aria-controls="navbarToggler9" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,43 +103,11 @@
         <div class="collapse navbar-collapse" id="navbarToggler9">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link" href="index.html">Go Add New Address Items Instead</a>
+                  <a class="nav-link" href="new-address.jsp">Go Add New Address Items Instead</a>
                 </li>
             </ul>
-           </div>
-          </nav>
-	<!--  possible this is done already -->
-	<!-- See if the link for CREATE NEW ADDRESS BOOK IS WHAT WE'RE LOOKING FOR HERE-->
-
-
-	<!-- Not yet implemented! -->
-	<form action = "CreateNewAddressBookServlet" method="post">
-		<!-- Implemented via AddressBookDetail.java as AddressBookName  -->
-		<h4>Address Book Name: <input type ="text" name = "addressBookName"></h4><br />
-		
-		<!-- Implemented via AddressBookUser.java as AddressBookUser  -->
-		<h4>User name:        <input type = "text" name = "userName"></h4><br />
-		
-		<!-- all properties from Address.java -->
-		<!--  not quite working yet, needs troubleshoot! fix was taglib at top! Must be added-->			
-		Available Addresses:<br />
-		<!-- Multiple size = how many can be in the list! -->
-		
-		 
-		 
-		 
-		<select name="allItemsToAdd" multiple size="6">
-			
-			<c:forEach items = "${requestScope.allItems}" var="currentitem">
-		 		<option value = "${currentitem.id}"> ${currentitem.name} | ${currentitem.address} </option>
-			</c:forEach >
-			
-		</select> <br />
-		 
-		
-		
-		<input type = "submit" value="Create Book and Add Addresses">
-	</form>
+        </div>
+      </nav>
 	
 
 </body>

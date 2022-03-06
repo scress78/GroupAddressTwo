@@ -35,19 +35,26 @@
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: cover;
-        color:burlywood;
+        color:#9C4500;
       }
+      
+      .element:hover{
+      	color:#00A7DC;
+      }
+      
 </style>
 <body>
-	<h1>Add A New Address Here</h1>
+	<h1 class="element">Add A New Address Here</h1>
 	
-	<h2>Add New Address Item</h2>
-	<form action = "CreateNewAddressServlet" method="post">
+	<h2 class="element">Add New Address Item</h2>
+	<form action = "CreateNewAddressServlet" method="post" class="element">
 		
 		Name: <input type ="text" name = "name"> *(Enter Name of Person or Business)<br><br>
 		Street Address: <input type = "text" name = "address"><br><br>
 		<input type = "submit" value="Add Address">
+		<a class="nav-link" href="index.html" class="element">Home</a>
 	</form> <br />
+	
 
 </body>
 </html>

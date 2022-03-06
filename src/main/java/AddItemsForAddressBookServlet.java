@@ -32,9 +32,11 @@ public class AddItemsForAddressBookServlet extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		AddressHelper dao = new AddressHelper();
+		
 		request.setAttribute("allItems", dao.showAllItems());
 		System.out.println("In AddItemsForAddressBookServlet");
 		System.out.println(dao.showAllItems());
+		
 		if(dao.showAllItems().isEmpty()){
 			request.setAttribute("allItems", " ");
 		}

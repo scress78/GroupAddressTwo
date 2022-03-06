@@ -19,6 +19,7 @@ public class AddressHelper {
 			Persistence.createEntityManagerFactory("AddressGroupTwo");
 
 	public void insertItem(Address li) {
+		// new Address to DB
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
 		em.persist(li);
@@ -27,12 +28,14 @@ public class AddressHelper {
 	}
 	
 	public List<Address> showAllItems(){
+		// show all Addresses from DB
 		EntityManager em = emfactory.createEntityManager();
 		List<Address> allItems = em.createQuery("SELECT i FROM Address i").getResultList();
 		return allItems;
 	}
 	
 	public void deleteItem(Address toDelete) {
+		// delete Address by Name
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
 		
@@ -60,7 +63,7 @@ public class AddressHelper {
 	 * @return
 	 */
 	public Address searchForItemById(int idToEdit) {
-		// TODO Auto-generated method stub
+		// Search by ID
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
 		Address found = em.find(Address.class, idToEdit);
@@ -72,7 +75,7 @@ public class AddressHelper {
 	 * @param toEdit
 	 */
 	public void updateItem(Address toEdit) {
-		// TODO Auto-generated method stub
+		// Update existing edited Address
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
 		em.merge(toEdit);
@@ -86,7 +89,7 @@ public class AddressHelper {
 	 * @return
 	 */
 	public List<Address> searchforItemByName(String Name) {
-		// TODO Auto-generated method stub
+		// Search by Name (Contact Name)
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
 		TypedQuery<Address>typedQuery = em.createQuery(
@@ -104,7 +107,7 @@ public class AddressHelper {
 	 * @return
 	 */
 	public List<Address> searchForItemByAddress(String Address) {
-		// TODO Auto-generated method stub
+		// Search by Address
 		EntityManager em = emfactory.createEntityManager();
 		em.getTransaction().begin();
 		TypedQuery<Address>typedQuery = em.createQuery(

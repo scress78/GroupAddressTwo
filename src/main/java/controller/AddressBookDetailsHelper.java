@@ -20,6 +20,7 @@ public class AddressBookDetailsHelper {
 	static EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("AddressGroupTwo");
 	
 		public void insertNewListDetails(AddressBookDetails s) {
+			// New AdBook to DB
 			EntityManager em = emfactory.createEntityManager();
 			em.getTransaction().begin();
 			em.persist(s);
@@ -28,12 +29,14 @@ public class AddressBookDetailsHelper {
 		}
 		
 		public List<AddressBookDetails> getLists() {
+			// Get BookDetails from DB
 			EntityManager em = emfactory.createEntityManager();
 			List<AddressBookDetails> allDetails = em.createQuery("SELECT d FROM AddressBookDetails d").getResultList();
 			return allDetails;
 		}
 		
 		public void deleteList(AddressBookDetails toDelete) {
+			// Delete Book
 			EntityManager em = emfactory.createEntityManager();
 			em.getTransaction().begin();
 			TypedQuery<AddressBookDetails> typedQuery = em.createQuery("select detail from AddressBookDetails detail where detail.id = :selectedId", AddressBookDetails.class);
@@ -50,6 +53,7 @@ public class AddressBookDetailsHelper {
 		}
 		
 		public AddressBookDetails searchForListDetailsById(Integer tempId) {
+			// Find Book by ID
 			EntityManager em = emfactory.createEntityManager();
 			em.getTransaction().begin();
 			AddressBookDetails found = em.find(AddressBookDetails.class, tempId);
@@ -58,6 +62,7 @@ public class AddressBookDetailsHelper {
 			}
 		
 		public void updateList(AddressBookDetails toEdit) {
+			// Update Existing Book to DB
 			EntityManager em = emfactory.createEntityManager();
 			em.getTransaction().begin();
 			em.merge(toEdit);

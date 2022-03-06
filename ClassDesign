@@ -1,24 +1,48 @@
 (src/model + src/controller) ??src/main/java/model etc??
 -----Models-------
-Address class
+Address class  #an instance of a single address
 Fields
 Int id   # id for database entry
 String name  # person's first and last name// business name
 String address  # address in form 123 Address St.
 # room for city, state, phone, any other contact info
 
-AddressBookDetails class
+AddressBookUser
+Fields
+Int id # id for database entry
+String userName # User's name assigned to AddressBook
+
+AddressBookDetails class # An AddressBook Class
 Fields
 Int id # id for database entry
 String listName # (examples could be "Business", "Personal", "Vacation")
+LocalDate dateStamp # Date added
+AddressBookUser # AddressBookUser Assigned to AddressBook
 List <Address> listOfAddresses # list of individual Addresses in book
-# User? can easily integrate object that store's ideas like Spencer's Business Address Book or Aaron's Personal Address Book
-#  would require new AddressUser class
+
 
 -----Controllers------
+AddAddressServlet class
+# dispatches from index to new-address.jsp
+
+AddressBookDetailsHelper
+# Persistence methods for AddressBookDetails
+# insertNewListDetails, getLists, deleteList, searchForListDetailsById, updateList
+
+AddressBookUserHelper
+# Persistence methods for AddressBookUser
+# insertAddressBookUser, showAllAddressBookUsers, findAddressBookuser
+
+AddressHelper
+# Persistence methods for Address
+# insertItem, showAllItems, deleteItem, searchForItemBy Id/Name/Address, updateItem
+
 AddressHelper class
 # works with Address class!
 # Use  EntityManagerFactory to build list of Addresses, and methods like insert, delete and edit
+
+LocalDateConverter class
+# Converts Local Date
 
 
 (src/main/webapp)
@@ -28,24 +52,50 @@ Index.html
 links
    > AddAddressServlet > new-address.jsp > CreateNewAddressServlet (creates address)
         **note navigation slightly different above than in homework projects. We add address from a separate page instead of homepage
+   
+   > AddItemsForAddressBookServlet > new-address-book.jsp > CreateNewAddressBookServlet
+
    > ViewAllAddressServlet > address-list.jsp > NavigationServlet (edit, delete or add address)
    		edit > EditAddressServlet > edit-address.jsp
    		add  > AddAddressServlet > new-address.jsp
    		delete > use AddressHelper to remove address
-   
-new-address.jsp
-# Page able to add info for new address
 
-edit-address.jsp
-# Page that edits addresses
+   > viewAllAddressDetailsServlet > view-address-book-details.jsp > BookNavigationServlet (edit, delete or add AddressBook)
+		edit > EditAddressBookDetailsServlet > edit-address-book-details.jsp
+		add > AddItemsForAddressBookServlet > new-address-book.jsp
+		delete > use AddressBookDetailsHelper to remove Address Book
+
 
 address-list.jsp
 # view all current possible addresses
 
+edit-address.jsp
+# Page that edits addresses
+
+edit-address-book-details.jsp
+# Page that edits address books
+
+new-address.jsp 
+# Page able to add info for new address
+
+new-address-book.jsp
+# Page able to add new address books
+
+# view-address-book-details.jsp
+# view all current possible address books
+
+
 ---Servlets---
-AddNewAddressServlet -- redirects from index.html to new-address.jsp
+in controller
+AddAddressServlet -- redirects from index.html to new-address.jsp
+ViewAllAddressDetailsServlet -- from multiple sites to view-address-book-details.jsp (displays all AddressBooks and contents)
+
+in main
+AddItemsForAddressBookServlet - redirects from index to new-address-book.jsp
+BookNavigationServlet -- processes requests from view-address-book-details.jsp
+CreateNewAddressBookServlet -- processes address book entry on new-address-book.jsp, creates new address book
 CreateNewAddressServlet -- processes address entry on new-address.jsp, creates new address
+EditAddressBookDetailsServlet - takes information from edit-address-book-details.jsp and processes changes
 EditAddressServlet -- redirects from address-list.jsp to edit-address.jsp
 NavigationServlet -- processes requests in address-list.jsp
-
 

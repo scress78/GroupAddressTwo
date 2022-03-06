@@ -24,6 +24,7 @@ public class AddressBookUserHelper {
 			Persistence.createEntityManagerFactory("AddressGroupTwo");
 		
 		public void insertAddressBookUser(AddressBookUser s) {
+			// new User to DB
 			EntityManager em = emfactory.createEntityManager();
 			em.getTransaction().begin();
 			em.persist(s);
@@ -32,6 +33,7 @@ public class AddressBookUserHelper {
 		}
 			
 		public List<AddressBookUser> showAllAddressBookUsers() {
+			// Show all users from DB
 			EntityManager em = emfactory.createEntityManager();
 			// make sure table exists or can be querried.. looks good, capitalization is ok
 			List<AddressBookUser> allAddressBookUsers = em.createQuery("SELECT s FROM AddressBookUser s").getResultList();
@@ -39,6 +41,7 @@ public class AddressBookUserHelper {
 		}
 		
 		public AddressBookUser findAddressBookUser(String nameToLookUp) {
+			// find Username by string
 			EntityManager em = emfactory.createEntityManager();
 			em.getTransaction().begin();
 			TypedQuery<AddressBookUser> typedQuery = em.createQuery("select us from AddressBookUser us where us.AddressBookUserName = :selectedName", AddressBookUser.class);
