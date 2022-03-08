@@ -12,41 +12,39 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 
-<style>
-
-    
+<style>    
     *{
         box-sizing: border-box;
       }
+      
+    @font-face {
+       font-family: brushScriptMT;
+    }
 
-       @font-face {
-        font-family: brushScriptMT;
-        }
-
-        h1{
-      font-family: Brush Script MT;
-      text-align: center;
-      font-size: 500%;
+    h1{
+       font-family: Brush Script MT;
+       text-align: center;
+       font-size: 500%;
       color:darkgreen;
-        }
-    
-      body{
-        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-        background-color: lightblue;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
-        color:burlywood;
-        color:#9C4500
-      }
-      
-      .element:hover{
-      	color:#00A7DC;
-      }
-      
-      .navbar .navbar-nav .nav-link:hover {
-        color:darkgreen;
-		}
+    }
+   
+     body{
+       font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+       background-color: lightblue;
+       background-repeat: no-repeat;
+       background-attachment: fixed;
+       background-size: cover;
+       color:burlywood;
+       color:#9C4500
+     }
+     
+     .element:hover{
+     	color:#00A7DC;
+     }
+     
+     .navbar .navbar-nav .nav-link:hover {
+       color:darkgreen;
+	}
 	.navbar .navbar-nav .nav-link {
   			position: relative;
 	}

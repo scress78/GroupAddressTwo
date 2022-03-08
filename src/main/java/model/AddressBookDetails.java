@@ -32,7 +32,7 @@ public class AddressBookDetails {
 	
 	//@JoinTable
 	// Merge used below // always RETURN HERE AND CHECK MERGE VS PERSIST!
-	@OneToMany(cascade=CascadeType.PERSIST, fetch=FetchType.EAGER)
+	@OneToMany(cascade=CascadeType.MERGE, fetch=FetchType.EAGER)
 	private List<Address> listOfAddresses;
 	
 	public int getId() {
@@ -88,12 +88,12 @@ public class AddressBookDetails {
 		this.dateStamp = dateStamp;
 	}
 	
-	public AddressBookDetails(String listName, AddressBookUser addressBookUser, List<Address> listOfAddresses, LocalDate dateStamp) {
+	public AddressBookDetails(String listName, AddressBookUser addressBookUser, LocalDate dateStamp, List<Address> listOfAddresses) {
 		super();
 		this.listName = listName;
 		this.addressBookUser = addressBookUser;
-		this.listOfAddresses = listOfAddresses;
 		this.dateStamp = dateStamp;
+		this.listOfAddresses = listOfAddresses;
 	}
 	
 	//matching constructor from AddressBookDetailsTester where there's a slight issue currently

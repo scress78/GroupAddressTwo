@@ -114,7 +114,7 @@
 	<c:forEach items="${requestScope.allLists}" var="currentlist">
 		<div class="element">
 		<tr>
-			<td> <input type="radio" name="id" value="${currentlist.id}"><h2>List Name: ${currentlist.listName}</h2></td>
+			<td> <input type="radio" name="id" value="${currentlist.id}"><h2>Address Book Name: ${currentlist.listName}</h2></td>
 		</tr>
 		
 		<tr>

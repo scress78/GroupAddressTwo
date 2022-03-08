@@ -38,7 +38,7 @@ public class CreateNewAddressBookServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
+		System.out.println("In Create New Address Book Servlet");		
 		AddressHelper lih = new AddressHelper();
 		
 		// matches input field in new-address-book.jsp
@@ -56,14 +56,14 @@ public class CreateNewAddressBookServlet extends HttpServlet {
 		//make sure something was selected – otherwise we get a nullpointer exception
 		if (selectedAddresses != null && selectedAddresses.length > 0){
 			for(int i = 0; i<selectedAddresses.length; i++) {
-				System.out.println(selectedAddresses[i]);
+				//System.out.println(selectedAddresses[i]);
 				Address c = lih.searchForItemById(Integer.parseInt(selectedAddresses[i]));
 				selectedAddressesInList.add(c);
 				}
 		}
 		
 		//addresses being added
-		System.out.println(selectedAddressesInList);
+		System.out.println("Selected Addresses in List: " + selectedAddressesInList);
 		
 		// make a new user, assign that user a username
 		AddressBookUser user = new AddressBookUser(userName);
@@ -72,7 +72,7 @@ public class CreateNewAddressBookServlet extends HttpServlet {
 		AddressBookDetails sld = new AddressBookDetails(addressBookName, user, LocalDate.now());
 		
 		//set the Addresses, with AddressBookDetails method
-		//sld.setListOfAddresses(selectedAddressesInList);
+		sld.setListOfAddresses(selectedAddressesInList);
 		
 		System.out.println(sld.toString());
 		

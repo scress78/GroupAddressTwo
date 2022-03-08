@@ -52,6 +52,7 @@ public class AddressBookDetailsHelper {
 			em.close();
 		}
 		
+		// use this to return a specific address book
 		public AddressBookDetails searchForListDetailsById(Integer tempId) {
 			// Find Book by ID
 			EntityManager em = emfactory.createEntityManager();
